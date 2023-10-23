@@ -38,9 +38,9 @@ def download_image_and_encode(url):
     return encoded_image
 
 # Spotify credentials
-username = "3155ypbfxjscr5iikio7gzbgwtyy"
-client_id = "81addffd52fa4b5fb9642fa2f1456025"
-client_secret = "426b0028362749e7be9a57b90162c9f7"
+username = "<user>"
+client_id = "<client id>"
+client_secret = "<client secret>"
 redirect_uri = "http://localhost:8123"
 scope = ["user-library-read",
          "playlist-read-private",
@@ -52,7 +52,6 @@ scope = ["user-library-read",
 # Playlist names
 playlist_names = ["Release Radar", "Discover Weekly"]
 
-birdy_uri = 'spotify:artist:2WX2uTcsvV5OnS0inACecP'
 spotify = spotipy.Spotify(auth_manager=
                           SpotifyOAuth(
                               scope=scope, 
