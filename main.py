@@ -6,6 +6,7 @@ import spotipy
 import spotipy.util as util
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy.cache_handler import CacheFileHandler
+
 def print_(text:str)->None:
     current_datetime = datetime.datetime.now()
     formatted_datetime = current_datetime.strftime("%d.%m.%Y - %H:%M:%S")
@@ -36,9 +37,6 @@ def download_image_and_encode(url):
     encoded_image = base64_data.decode('utf-8')
     return encoded_image
 
-
-
-
 # Spotify credentials
 username = "3155ypbfxjscr5iikio7gzbgwtyy"
 client_id = "81addffd52fa4b5fb9642fa2f1456025"
@@ -55,7 +53,18 @@ scope = ["user-library-read",
 playlist_names = ["Release Radar", "Discover Weekly"]
 
 birdy_uri = 'spotify:artist:2WX2uTcsvV5OnS0inACecP'
-spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri, username=username, open_browser=False, cache_handler=CacheFileHandler(cache_path="/SpotyBackup/cache/cachefile")))
+spotify = spotipy.Spotify(auth_manager=
+                          SpotifyOAuth(
+                              scope=scope, 
+                              client_id=client_id, 
+                              client_secret=client_secret, 
+                              redirect_uri=redirect_uri, 
+                              username=username, 
+                              open_browser=False, 
+                              cache_path="./.cache/cachefile",
+                              # cache_handler=CacheFileHandler(cache_path="./.cache/cachefile")
+                              )
+                            )
 Playlists = spotify.user_playlists(user=username)
 
 plists = []
